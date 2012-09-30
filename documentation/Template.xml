@@ -1,0 +1,83 @@
+﻿<?xml version="1.0"?>
+<template>
+	<name>Default name</name>
+	
+	<extensions>
+		<renameExtensions>
+		    <ext>.hgignore</ext>
+			<ext utf="true">.sln</ext>
+			<ext utf="true">.xml</ext>
+			<ext utf="true">.aspx</ext>
+			<ext utf="true">.config</ext>
+			<ext utf="true">.browser</ext>
+			<ext utf="true">.ascx</ext>
+			<ext utf="true">.cs</ext>
+			<ext utf="true">.js</ext>
+			<ext utf="true">.asmx</ext>
+			<ext utf="true">.txt</ext>
+			<ext utf="true">.cshtml</ext>
+			<ext utf="true">.razor</ext>
+			<ext utf="true">.master</ext>
+			<ext utf="true">.css</ext>
+			<ext utf="true">.air</ext>
+			<ext utf="true">.htm</ext>
+			<ext utf="true">.ashx</ext>
+			<ext utf="true">.xsd</ext>
+			<ext utf="true">.xsx</ext>
+			<ext utf="true">.xsc</ext>
+			<ext utf="true">.xss</ext>
+			<ext utf="true">.py</ext>
+			<ext utf="true">.rb</ext>
+			<ext utf="true">.xslttemplate</ext>
+			<ext utf="true">.dtd</ext>
+			<ext utf="true">.xslt</ext>
+			<ext utf="true">.xsl</ext>
+			<ext utf="true">.html</ext>
+			<ext utf="true">.csproj</ext>
+			<ext>.user</ext>
+			<ext utf="true">.tmpl</ext>
+			<ext utf="true">.wsf</ext>
+		</renameExtensions>
+		<excludeExtensions>
+			<ext></ext>
+			<ext>.bat</ext>
+			<ext>.sql</ext>
+			<ext>.emptydir</ext>
+			<ext>.sdf</ext>
+			<ext>.pdf</ext>
+			<ext>.swf</ext>
+			<ext>.dll</ext>
+			<ext>.gif</ext>
+			<ext>.png</ext>
+			<ext>.exa</ext>
+			<ext>.gen</ext>
+			<ext>.del</ext>
+			<ext>.pdb</ext>
+			<ext>.jpg</ext>
+			<ext>.ico</ext>
+			<ext>.cd</ext>
+			<ext>.cache</ext>
+			<ext>.user</ext>
+			<ext>.exe</ext>
+		</excludeExtensions>
+		<removeExtensions>
+			<ext>.suo</ext>
+			<ext>.lck</ext>
+		</removeExtensions>
+	</extensions>
+	<guids>
+		<guid>9e77b038-4e54-45ab-a6fd-fa00dc4a0ed9</guid>
+		<guid>7c064b53-d0fd-42e4-a7cf-c9c74fc47ea8</guid>
+		<guid>b947dff4-d4c0-43ea-93c6-e2e8643da113</guid>
+		<guid>ab4f45ae-61d6-4f0b-8017-bc38132be763</guid>
+		<guid>71e7c6f2-40ea-4673-b7bc-c27370cc0e09</guid>
+	</guids>
+	<actions>
+		<action>
+			<type>Lucrasoft.uMadeEasy.Actions.CreateDestinationAction, uMadeEasy.Actions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+			<parameters>
+				<parameter name="testParam">testValue</parameter>
+			</parameters>
+		</action>
+	</actions>
+</template>
