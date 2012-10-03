@@ -8,7 +8,7 @@ namespace Lucrasoft.uMadeEasy.Core.Template
     /// <summary>
     /// Represents a configured action from the template's XML
     /// </summary>
-    public class XmlAction
+    public class XmlGeneratorAction
     {
         /// <summary>
         /// Gets or sets the action typename
@@ -20,9 +20,9 @@ namespace Lucrasoft.uMadeEasy.Core.Template
         /// </summary>
         public Dictionary<string, string> Parameters { get; set; }
 
-        public XmlAction() { }
+        public XmlGeneratorAction() { }
 
-        public XmlAction(string actionType, Dictionary<string, string> parameters)
+        public XmlGeneratorAction(string actionType, Dictionary<string, string> parameters)
         {
             ActionType = actionType;
             Parameters = parameters;

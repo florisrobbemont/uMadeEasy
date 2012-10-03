@@ -33,6 +33,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,18 +42,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\ActionList.cs" />
-    <Compile Include="Actions\IAction.cs" />
+    <Compile Include="DependencyInjector.cs" />
+    <Compile Include="Generator\GeneratorAction.cs" />
     <Compile Include="Generator\GeneratorResults.cs" />
     <Compile Include="Generator\GeneratorArguments.cs" />
+    <Compile Include="InputFields\ActionInputValues.cs" />
+    <Compile Include="Generator\IGeneratorAction.cs" />
+    <Compile Include="InputFields\InputFieldControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputFields\InputFieldControl.Designer.cs">
+      <DependentUpon>InputFieldControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generator\ProjectGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializers\XmlSerializers.cs" />
     <Compile Include="Serializers\XmlTextWriterFull.cs" />
-    <Compile Include="Template\XmlAction.cs" />
+    <Compile Include="Template\ITemplateAction.cs" />
+    <Compile Include="Template\TemplateWriter.cs" />
     <Compile Include="Template\XmlExtension.cs" />
     <Compile Include="Template\TemplateReader.cs" />
     <Compile Include="Template\TemplateInformation.cs" />
+    <Compile Include="Template\XmlGeneratorAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="InputFields\InputFieldControl.resx">
+      <DependentUpon>InputFieldControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

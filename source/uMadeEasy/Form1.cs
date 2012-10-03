@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Lucrasoft.uMadeEasy.Actions;
-using Lucrasoft.uMadeEasy.Core.Actions;
 using Lucrasoft.uMadeEasy.Core.Template;
 
 namespace Lucrasoft.uMadeEasy
@@ -22,7 +21,7 @@ namespace Lucrasoft.uMadeEasy
         private void Form1Load(object sender, EventArgs e)
         {
             var templateReader = TemplateReader.ReadTemplate(@"C:\Development\Github\uMadeEasy\documentation\Template.xml");
-
+            TemplateWriter.WriteTemplateFile(templateReader, @"C:\Development\Github\uMadeEasy\documentation\Template2.xml");
         }
     }
 }

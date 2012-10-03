@@ -31,7 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +44,12 @@
     <Compile Include="ActionHelpers\DirectoryRenamerCopier.cs" />
     <Compile Include="ActionHelpers\HostFileWriter.cs" />
     <Compile Include="CreateDestinationAction.cs" />
+    <Compile Include="InputFields\CreateDestinationField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputFields\CreateDestinationField.Designer.cs">
+      <DependentUpon>CreateDestinationField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +58,7 @@
       <Name>uMadeEasy.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -27,7 +27,7 @@ namespace Lucrasoft.uMadeEasy.Core.Template
         public IEnumerable<XmlExtension> RenameExtensions { get; set; }
 
         /// <summary>
-        /// Gets or sets all the extensions that should be excluded from renaming 
+        /// Gets or sets all the extensions that should be excluded from renaming
         /// (but should be copied to the new directory)
         /// </summary>
         public IEnumerable<XmlExtension> ExcludeExtensions { get; set; }
@@ -40,12 +40,17 @@ namespace Lucrasoft.uMadeEasy.Core.Template
         /// <summary>
         /// Gets or sets the actions associated with this template
         /// </summary>
-        public IEnumerable<XmlAction> Actions { get; set; } 
+        public IEnumerable<XmlGeneratorAction> Actions { get; set; }
 
         /// <summary>
         /// Gets or sets the words that should be renamed, and their new values
         /// </summary>
-        public Dictionary<string, string> RenameWords { get; set; }
+        public IEnumerable<string> Guids { get; set; }
+
+        /// <summary>
+        /// Gets or sets the words that should be renamed, and their new values
+        /// </summary>
+        public Dictionary<string, string> RenameWords { get; private set; }
 
         public TemplateInformation()
         {

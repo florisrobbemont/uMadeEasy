@@ -1,5 +1,6 @@
-﻿using Lucrasoft.uMadeEasy.Core.Actions;
-using Lucrasoft.uMadeEasy.Core.Generator;
+﻿using Lucrasoft.uMadeEasy.Core.Generator;
+using Lucrasoft.uMadeEasy.Core.InputFields;
+using Lucrasoft.uMadeEasy.Core.Template;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Lucrasoft.uMadeEasy.Actions
 {
-    public class CreateDestinationAction : IAction
+    public class CreateDestinationAction : IGeneratorAction
     {
         public string ActionName
         {
@@ -29,14 +30,19 @@ namespace Lucrasoft.uMadeEasy.Actions
             get { return true; }
         }
 
-        public bool ExecuteAction(GeneratorArguments arguments)
+        public bool ExecuteAction(TemplateInformation templateInformation, ActionInputValues values)
         {
             throw new NotImplementedException();
         }
 
-        public bool RollbackAction(GeneratorArguments arguments)
+        public bool RollbackAction(TemplateInformation templateInformation, ActionInputValues values)
         {
             throw new NotImplementedException();
+        }
+
+        public Type InputControl
+        {
+            get { return typeof(InputFields.CreateDestinationField); }
         }
     }
 }

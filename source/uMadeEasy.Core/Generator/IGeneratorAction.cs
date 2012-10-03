@@ -1,17 +1,19 @@
-﻿using System.ComponentModel.Composition;
-using Lucrasoft.uMadeEasy.Core.Generator;
+﻿using Lucrasoft.uMadeEasy.Core.Generator;
+using Lucrasoft.uMadeEasy.Core.InputFields;
+using Lucrasoft.uMadeEasy.Core.Template;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 
-namespace Lucrasoft.uMadeEasy.Core.Actions
+namespace Lucrasoft.uMadeEasy.Core.Generator
 {
     /// <summary>
-    /// Represents a single action performed by the WebsiteGenerator.
+    /// Represents a single action performed by the generator.
     /// </summary>
     [InheritedExport]
-    public interface IAction
+    public interface IGeneratorAction
     {
         /// <summary>
         /// Gets the display name for this action.
@@ -36,11 +38,16 @@ namespace Lucrasoft.uMadeEasy.Core.Actions
         /// <summary>
         /// Executes the action.
         /// </summary>
-        bool ExecuteAction(GeneratorArguments arguments);
+        bool ExecuteAction(TemplateInformation templateInformation, ActionInputValues values);
 
         /// <summary>
-        /// Rolls back the action (if supported)
+        /// Rolls back the action (if supported).
         /// </summary>
-        bool RollbackAction(GeneratorArguments arguments);
+        bool RollbackAction(TemplateInformation templateInformation, ActionInputValues values);
+
+        /// <summary>
+        /// Gets the optional input control for this action.
+        /// </summary>
+        Type InputControl { get; }
     }
 }

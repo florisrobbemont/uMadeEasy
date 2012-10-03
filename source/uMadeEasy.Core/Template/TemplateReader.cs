@@ -51,18 +51,13 @@ namespace Lucrasoft.uMadeEasy.Core.Template
 
             var actionsElement = template.Element("actions");
             if (actionsElement != null)
-            {
-                templateInformation.Actions = ReadActionsList(actionsElement).ToList();
-            }
+                templateInformation.Actions = ReadActionsList(actionsElement);
             else
                 throw new XmlSchemaException("Actions element not present in template file");
 
             var guidsElement = template.Element("guids");
             if (guidsElement != null)
-            {
-                foreach(var guid in guidsElement.Descendants("guid"))
-                    templateInformation.RenameWords.Add(guid.Value, Guid.NewGuid().ToString());
-            }
+                templateInformation.Guids = guidsElement.Descendants("guid").Select(x => x.Value);
 
             return templateInformation;
         }
@@ -72,7 +67,7 @@ namespace Lucrasoft.uMadeEasy.Core.Template
             if (extensionList == null)
                 yield break;
 
-            foreach(var extension in extensionList.Descendants("ext"))
+            foreach (var extension in extensionList.Descendants("ext"))
             {
                 var xmlExtension = new XmlExtension(extension.Value, false);
                 var utfAttribute = extension.Attribute("utf");
@@ -84,14 +79,14 @@ namespace Lucrasoft.uMadeEasy.Core.Template
             }
         }
 
-        private static IEnumerable<XmlAction> ReadActionsList(XElement actionsList)
+        private static IEnumerable<XmlGeneratorAction> ReadActionsList(XElement actionsList)
         {
             if (actionsList == null)
                 yield break;
 
             foreach (var action in actionsList.Descendants("action"))
             {
-                var xmlAction = new XmlAction();
+                var xmlAction = new XmlGeneratorAction();
 
                 var typeElement = action.Element("type");
                 if (typeElement != null)
