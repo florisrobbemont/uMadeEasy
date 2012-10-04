@@ -1,6 +1,6 @@
 ﻿namespace Lucrasoft.uMadeEasy.Core.InputFields
 {
-    partial class InputFieldControl
+    partial class InputFieldRepeater
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,14 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // InputFieldControl
+            // InputFieldRepeater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.MinimumSize = new System.Drawing.Size(556, 0);
-            this.Name = "InputFieldControl";
-            this.Size = new System.Drawing.Size(556, 122);
+            this.Name = "InputFieldRepeater";
+            this.Size = new System.Drawing.Size(566, 150);
             this.ResumeLayout(false);
 
         }

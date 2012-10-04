@@ -18,6 +18,9 @@ namespace Lucrasoft.uMadeEasy.Core
 
         public DependencyInjector(IEnumerable<string> folders)
         {
+            if (folders == null)
+                throw new ArgumentNullException("folders");
+
             this.folders = folders;
             InitializeDependencyInjection();
         }

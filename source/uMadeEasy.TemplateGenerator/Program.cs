@@ -1,17 +1,18 @@
 ﻿using Lucrasoft.uMadeEasy.Core;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Lucrasoft.uMadeEasy
+namespace Lucrasoft.uMadeEasy.TemplateGenerator
 {
     internal static class Program
     {
         /// <summary>
         /// Gets the Core DI container object
         /// </summary>
-        internal static Core.DependencyInjector Injector { get; private set; }
+        internal static DependencyInjector Injector { get; private set; }
 
         /// <summary>
         /// The main entry point for the application.
@@ -19,7 +20,11 @@ namespace Lucrasoft.uMadeEasy
         [STAThread]
         private static void Main()
         {
-            Injector = new DependencyInjector(null);
+            Injector = new DependencyInjector(new string[]
+                                                  {
+                                                      Path.Combine(IoHelpers.GetStartupPath(), ""),
+                                                      Path.Combine(IoHelpers.GetStartupPath(), "Actions")
+                                                  });
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

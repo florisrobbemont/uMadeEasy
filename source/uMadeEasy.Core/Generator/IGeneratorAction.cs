@@ -38,12 +38,12 @@ namespace Lucrasoft.uMadeEasy.Core.Generator
         /// <summary>
         /// Executes the action.
         /// </summary>
-        bool ExecuteAction(TemplateInformation templateInformation, ActionInputValues values);
+        bool ExecuteAction(GeneratorArguments arguments, ActionInputValues values);
 
         /// <summary>
         /// Rolls back the action (if supported).
         /// </summary>
-        bool RollbackAction(TemplateInformation templateInformation, ActionInputValues values);
+        bool RollbackAction(GeneratorArguments arguments, ActionInputValues values);
 
         /// <summary>
         /// Gets the optional input control for this action.

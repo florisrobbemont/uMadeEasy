@@ -30,12 +30,12 @@ namespace Lucrasoft.uMadeEasy.Actions
             get { return true; }
         }
 
-        public bool ExecuteAction(TemplateInformation templateInformation, ActionInputValues values)
+        public bool ExecuteAction(GeneratorArguments arguments, ActionInputValues values)
         {
             throw new NotImplementedException();
         }
 
-        public bool RollbackAction(TemplateInformation templateInformation, ActionInputValues values)
+        public bool RollbackAction(GeneratorArguments arguments, ActionInputValues values)
         {
             throw new NotImplementedException();
         }

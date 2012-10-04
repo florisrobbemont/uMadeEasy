@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66FF2422-9A80-4074-98DF-8D1DB2FA19AD}</ProjectGuid>
+    <ProjectGuid>{3CFD8702-85CD-4245-AA0F-84AA5FFD216C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lucrasoft.uMadeEasy</RootNamespace>
-    <AssemblyName>uMadeEasy</AssemblyName>
+    <RootNamespace>Lucrasoft.uMadeEasy.TemplateGenerator</RootNamespace>
+    <AssemblyName>uMadeEasy.TemplateGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,9 +52,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,12 +72,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\uMadeEasy.Actions\uMadeEasy.Actions.csproj">
-      <Project>{84C7A439-7984-4D00-B779-06DF1D264728}</Project>
-      <Name>uMadeEasy.Actions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\uMadeEasy.Core\uMadeEasy.Core.csproj">
       <Project>{9BF8A2AC-22C4-4BFA-9116-ED2EFA1D2B77}</Project>
       <Name>uMadeEasy.Core</Name>
