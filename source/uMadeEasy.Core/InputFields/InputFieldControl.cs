@@ -21,5 +21,13 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
         {
             return new ActionInputValues();
         }
+
+        /// <summary>
+        /// Validates the current control and returns information about the validation
+        /// </summary>
+        public virtual ActionInputValidationArguments ValidateInputValues()
+        {
+            return null;
+        }
     }
 }

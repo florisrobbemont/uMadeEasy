@@ -54,15 +54,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="InputFields\CreateDestinationField.resx">
+      <DependentUpon>CreateDestinationField.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\uMadeEasy.Core\uMadeEasy.Core.csproj">
       <Project>{9bf8a2ac-22c4-4bfa-9116-ed2efa1d2b77}</Project>
       <Name>uMadeEasy.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="InputFields\CreateDestinationField.resx">
-      <DependentUpon>CreateDestinationField.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

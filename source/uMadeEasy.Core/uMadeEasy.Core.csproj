@@ -48,6 +48,7 @@
     <Compile Include="Generator\GeneratorArguments.cs" />
     <Compile Include="InputFields\ActionInputValues.cs" />
     <Compile Include="Generator\IGeneratorAction.cs" />
+    <Compile Include="InputFields\ActionInputValidationArguments.cs" />
     <Compile Include="InputFields\InputFieldControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

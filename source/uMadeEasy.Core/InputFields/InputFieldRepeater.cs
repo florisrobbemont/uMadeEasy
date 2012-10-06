@@ -22,7 +22,7 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
                                 IEnumerable<Type> controls,
                                 TemplateInformation template)
         {
-            Controls.Clear();
+            ediControlsPanel.Controls.Clear();
 
             BuildFieldsInternal(actions, controls, template);
         }
@@ -51,21 +51,30 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
                     throw new InvalidOperationException(string.Format("Could not find control ('{0}') in injected action list. Are you missing an assembly in the Actions folder?",
                                                                       generatorAction.InputControl.AssemblyQualifiedName));
 
-                Controls.Add(BuildEditControl(generatorAction, generatorControl, template));
+                ediControlsPanel.Controls.Add(BuildEditControl(generatorAction, generatorControl, template));
             }
         }
 
-        private static Control BuildEditControl(IGeneratorAction action, Type control, TemplateInformation template)
+        private Control BuildEditControl(IGeneratorAction action, Type control, TemplateInformation template)
         {
-            var groupBox = new GroupBox
+            var editControl = ReflectionHelpers.CreateTypeInstance<Control>(control);
+
+            if (editControl == null)
+                throw new InvalidOperationException("Could not create instance of edit control");
+
+            var groupBox = new GroupBox()
                                {
+                                   Margin = new Padding(0, 0, 5, 5),
                                    Padding = new Padding(5),
+                                   Name = string.Format("inputField_{0}", action.GetType().Name),
+                                   Width = editControl.Width + 10,
+                                   Height = editControl.Height + 25,
                                    Text = action.ActionName,
-                                   Name = string.Format("inputField_{0}", action.ActionName),
-                                   AutoSize = true
                                };
 
-            groupBox.Controls.Add(ReflectionHelpers.CreateTypeInstance<Control>(control));
+            editControl.Dock = DockStyle.Top;
+
+            groupBox.Controls.Add(editControl);
 
             return groupBox;
         }

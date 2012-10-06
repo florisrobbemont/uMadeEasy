@@ -34,14 +34,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.MinimumSize = new System.Drawing.Size(556, 0);
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.MinimumSize = new System.Drawing.Size(380, 0);
             this.Name = "InputFieldControl";
-            this.Size = new System.Drawing.Size(556, 122);
+            this.Size = new System.Drawing.Size(380, 35);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+
+
+
+
+
     }
 }

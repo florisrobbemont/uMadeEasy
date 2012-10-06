@@ -28,29 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnGenerate = new System.Windows.Forms.Button();
-            this.tbSiteName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.inputFieldRepeater1 = new Lucrasoft.uMadeEasy.Core.InputFields.InputFieldRepeater();
             this.cbTemplate = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tbSiteName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnGenerate = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.inputFieldRepeater1 = new Lucrasoft.uMadeEasy.Core.InputFields.InputFieldRepeater();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(566, 121);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -60,45 +47,12 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.tbSiteName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 127);
+            this.groupBox1.Location = new System.Drawing.Point(12, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(566, 88);
+            this.groupBox1.Size = new System.Drawing.Size(785, 87);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gegevens";
-            // 
-            // btnGenerate
-            // 
-            this.btnGenerate.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGenerate.Location = new System.Drawing.Point(12, 442);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(542, 46);
-            this.btnGenerate.TabIndex = 7;
-            this.btnGenerate.Text = "Genereer";
-            this.btnGenerate.UseVisualStyleBackColor = true;
-            // 
-            // tbSiteName
-            // 
-            this.tbSiteName.Location = new System.Drawing.Point(119, 28);
-            this.tbSiteName.Name = "tbSiteName";
-            this.tbSiteName.Size = new System.Drawing.Size(435, 20);
-            this.tbSiteName.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Naam website:";
-            // 
-            // inputFieldRepeater1
-            // 
-            this.inputFieldRepeater1.Location = new System.Drawing.Point(0, 247);
-            this.inputFieldRepeater1.Name = "inputFieldRepeater1";
-            this.inputFieldRepeater1.Size = new System.Drawing.Size(566, 172);
-            this.inputFieldRepeater1.TabIndex = 8;
             // 
             // cbTemplate
             // 
@@ -106,7 +60,7 @@
             this.cbTemplate.FormattingEnabled = true;
             this.cbTemplate.Location = new System.Drawing.Point(119, 54);
             this.cbTemplate.Name = "cbTemplate";
-            this.cbTemplate.Size = new System.Drawing.Size(435, 21);
+            this.cbTemplate.Size = new System.Drawing.Size(405, 21);
             this.cbTemplate.TabIndex = 9;
             this.cbTemplate.SelectedIndexChanged += new System.EventHandler(this.cbTemplateSelectedIndexChanged);
             // 
@@ -119,27 +73,76 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Template:";
             // 
+            // tbSiteName
+            // 
+            this.tbSiteName.Location = new System.Drawing.Point(119, 28);
+            this.tbSiteName.Name = "tbSiteName";
+            this.tbSiteName.Size = new System.Drawing.Size(405, 20);
+            this.tbSiteName.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Naam website:";
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerate.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGenerate.Location = new System.Drawing.Point(12, 399);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(785, 46);
+            this.btnGenerate.TabIndex = 7;
+            this.btnGenerate.Text = "Genereer";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(228, 25);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "uMadeEasy Generator";
+            // 
+            // inputFieldRepeater1
+            // 
+            this.inputFieldRepeater1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputFieldRepeater1.Location = new System.Drawing.Point(12, 135);
+            this.inputFieldRepeater1.Margin = new System.Windows.Forms.Padding(0);
+            this.inputFieldRepeater1.Name = "inputFieldRepeater1";
+            this.inputFieldRepeater1.Size = new System.Drawing.Size(798, 209);
+            this.inputFieldRepeater1.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 500);
+            this.ClientSize = new System.Drawing.Size(809, 452);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.inputFieldRepeater1);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "uMadeEasy Generator";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbSiteName;
         private System.Windows.Forms.Label label1;
@@ -147,6 +150,7 @@
         private Core.InputFields.InputFieldRepeater inputFieldRepeater1;
         private System.Windows.Forms.ComboBox cbTemplate;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
 
     }
 }
