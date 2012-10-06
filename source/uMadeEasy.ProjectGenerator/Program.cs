@@ -1,4 +1,5 @@
 ﻿using Lucrasoft.uMadeEasy.Core;
+using Lucrasoft.uMadeEasy.Core.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,7 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
             Injector = new DependencyInjector(new string[]
                                                   {
                                                       Path.Combine(IoHelpers.GetStartupPath(), ""),
-                                                      Path.Combine(IoHelpers.GetStartupPath(), "Actions")
+                                                      IoHelpers.GetActionPath()
                                                   });
 
             Application.EnableVisualStyles();

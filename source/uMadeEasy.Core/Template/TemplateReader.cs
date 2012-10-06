@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -11,6 +12,22 @@ namespace Lucrasoft.uMadeEasy.Core.Template
     /// </summary>
     public static class TemplateReader
     {
+        /// <summary>
+        /// Reads the template archive file and returns its information.
+        /// </summary>
+        /// <param name="folderPath">The full path to the template folder.</param>
+        public static IEnumerable<TemplateInformation> ReadTemplates(string folderPath)
+        {
+            if (string.IsNullOrEmpty(folderPath))
+                throw new ArgumentNullException("folderPath");
+
+            return from folder in Directory.GetDirectories(folderPath)
+                   select Directory.GetFiles(folder, "template.xml").ToList()
+                       into files
+                       where files.Any()
+                       select ParseXmlDocument(XDocument.Load(files.First()));
+        }
+
         /// <summary>
         /// Reads the template archive file and returns its information.
         /// </summary>

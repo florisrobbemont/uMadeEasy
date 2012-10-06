@@ -18,6 +18,8 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
             InitializeComponent();
         }
 
+        #region "Fields"
+
         public void BuildFields(IEnumerable<IGeneratorAction> actions,
                                 IEnumerable<Type> controls,
                                 TemplateInformation template)
@@ -57,20 +59,20 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
 
         private Control BuildEditControl(IGeneratorAction action, Type control, TemplateInformation template)
         {
-            var editControl = ReflectionHelpers.CreateTypeInstance<Control>(control);
+            var editControl = ReflectionHelpers.CreateTypeInstance<InputFieldControl>(control);
 
             if (editControl == null)
                 throw new InvalidOperationException("Could not create instance of edit control");
 
             var groupBox = new GroupBox()
-                               {
-                                   Margin = new Padding(0, 0, 5, 5),
-                                   Padding = new Padding(5),
-                                   Name = string.Format("inputField_{0}", action.GetType().Name),
-                                   Width = editControl.Width + 10,
-                                   Height = editControl.Height + 25,
-                                   Text = action.ActionName,
-                               };
+            {
+                Margin = new Padding(0, 0, 5, 5),
+                Padding = new Padding(5),
+                Name = string.Format("inputField_{0}", action.GetType().Name),
+                Width = editControl.Width + 10,
+                Height = editControl.Height + 25,
+                Text = action.ActionName,
+            };
 
             editControl.Dock = DockStyle.Top;
 
@@ -78,5 +80,25 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
 
             return groupBox;
         }
+
+        #endregion "Fields"
+
+        #region "Validation"
+
+        /// <summary>
+        /// Performs validation on all child controls
+        /// </summary>
+        public void ExecuteValidation()
+        {
+            foreach (var validationResult in (from Control control in ediControlsPanel.Controls.Cast<object>().Where(control => control is GroupBox)
+                                              from editControl in control.Controls.Cast<object>().Where(editControl => editControl is InputFieldControl)
+                                              select (InputFieldControl)editControl).Select(control => control.ValidateInputValues()).Where(validationResult => !validationResult.IsValid))
+            {
+                MessageBox.Show(this, validationResult.ValidationMessage, "Validation error", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion "Validation"
     }
 }

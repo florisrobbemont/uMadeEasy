@@ -23,7 +23,7 @@ namespace Lucrasoft.uMadeEasy.TemplateGenerator
             Injector = new DependencyInjector(new string[]
                                                   {
                                                       Path.Combine(IoHelpers.GetStartupPath(), ""),
-                                                      Path.Combine(IoHelpers.GetStartupPath(), "Actions")
+                                                      IoHelpers.GetActionPath()
                                                   });
 
             Application.EnableVisualStyles();
