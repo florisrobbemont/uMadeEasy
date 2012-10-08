@@ -8,7 +8,7 @@ namespace Lucrasoft.uMadeEasy.Core.Generator
     /// <summary>
     /// Contains the results of a newly generated project
     /// </summary>
-    public sealed class GeneratorResults
+    public sealed class GeneratorResult
     {
     }
 }

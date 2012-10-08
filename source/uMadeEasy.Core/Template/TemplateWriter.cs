@@ -45,7 +45,10 @@ namespace Lucrasoft.uMadeEasy.Core.Template
                                         GenerateExtensionList("removeExtensions", templateInformation.RenameExtensions, false)
                                     ),
                         new XElement("guids",
-                                        templateInformation.RenameWords.Select(x => new XElement("guid", x.Value))
+                                        templateInformation.Guids.Select(x => new XElement("guid", x))
+                                    ),
+                        new XElement("renameWords",
+                                        templateInformation.Words.Select(x => new XElement("word", x))
                                     ),
                         new XElement("actions",
                                         templateInformation.Actions.Select(GenerateAction)

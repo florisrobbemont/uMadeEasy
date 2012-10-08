@@ -47,7 +47,8 @@
   <ItemGroup>
     <Compile Include="DependencyInjector.cs" />
     <Compile Include="Generator\GeneratorAction.cs" />
-    <Compile Include="Generator\GeneratorResults.cs" />
+    <Compile Include="Generator\GeneratorActionResult.cs" />
+    <Compile Include="Generator\GeneratorResult.cs" />
     <Compile Include="Generator\GeneratorArguments.cs" />
     <Compile Include="InputFields\ActionInputValues.cs" />
     <Compile Include="Generator\IGeneratorAction.cs" />

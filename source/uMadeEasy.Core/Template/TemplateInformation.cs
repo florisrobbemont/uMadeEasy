@@ -19,7 +19,7 @@ namespace Lucrasoft.uMadeEasy.Core.Template
         /// <summary>
         /// Gets of sets the file path of the template.
         /// </summary>
-        public string FilePath { get; set; }
+        public string TemplatePath { get; set; }
 
         /// <summary>
         /// Gets or sets all the extensions that should be renamed
@@ -48,13 +48,33 @@ namespace Lucrasoft.uMadeEasy.Core.Template
         public IEnumerable<string> Guids { get; set; }
 
         /// <summary>
-        /// Gets or sets the words that should be renamed, and their new values
+        /// Gets or sets the words that should be renamed
         /// </summary>
-        public Dictionary<string, string> RenameWords { get; private set; }
+        public IEnumerable<string> Words { get; set; }
+
+        /// <summary>
+        /// Gets the dictionary that contains all the rename values and their new values
+        /// </summary>
+        public Dictionary<string, string> Renames { get; private set; }
+
+        public void Prepare(string newName)
+        {
+            foreach (var guid in Guids)
+            {
+                if (!Renames.ContainsKey(guid))
+                    Renames.Add(guid, Guid.NewGuid().ToString());
+            }
+
+            foreach (var word in Words)
+            {
+                if (!Renames.ContainsKey(word))
+                    Renames.Add(word, newName);
+            }
+        }
 
         public TemplateInformation()
         {
-            RenameWords = new Dictionary<string, string>();
+            Renames = new Dictionary<string, string>();
         }
     }
 }

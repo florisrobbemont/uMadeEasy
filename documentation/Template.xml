@@ -72,6 +72,10 @@
 		<guid>ab4f45ae-61d6-4f0b-8017-bc38132be763</guid>
 		<guid>71e7c6f2-40ea-4673-b7bc-c27370cc0e09</guid>
 	</guids>
+	<renameWords>
+		<word>Umb-Template</word>
+		<word>Umb-Template</word>
+	</renameWords>
 	<actions>
 		<action>
 			<type>Lucrasoft.uMadeEasy.Actions.CreateDestinationAction, uMadeEasy.Actions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</type>

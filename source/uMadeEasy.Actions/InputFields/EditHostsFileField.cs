@@ -1,31 +1,28 @@
 ﻿using Lucrasoft.uMadeEasy.Core.InputFields;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Lucrasoft.uMadeEasy.Actions.InputFields
 {
-    public partial class CreateDestinationField : InputFieldControl
+    public partial class EditHostsFileField : InputFieldControl
     {
-        public CreateDestinationField()
+        public EditHostsFileField()
         {
             InitializeComponent();
-        }
-
-        private void SelectFolderButtonClick(object sender, EventArgs e)
-        {
-            var result = folderBrowserDialog1.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                SitePathBox.Text = folderBrowserDialog1.SelectedPath;
-            }
         }
 
         public override ActionInputValues GetInputValues()
         {
             return new ActionInputValues()
                        {
-                           { "DestinationFolder", SitePathBox.Text }
+                           { "EditHostsFile", EditHostsFIleBox.Checked },
+                           { "HostName", HostNameBox.Text }
                        };
         }
 
@@ -33,8 +30,8 @@ namespace Lucrasoft.uMadeEasy.Actions.InputFields
         {
             var validateArgument = new ActionInputValidationArguments();
 
-            if (string.IsNullOrEmpty(SitePathBox.Text))
-                validateArgument.ValidationMessage = "Folder cannot be empty";
+            if (string.IsNullOrEmpty(HostNameBox.Text))
+                validateArgument.ValidationMessage = "Hostname cannot be empty";
 
             validateArgument.IsValid = string.IsNullOrEmpty(validateArgument.ValidationMessage);
 

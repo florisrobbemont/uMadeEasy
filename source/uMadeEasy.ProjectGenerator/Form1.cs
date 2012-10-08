@@ -68,9 +68,33 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
 
         #endregion "Templates"
 
+        #region "Generator"
+
         private void GenerateButtonClick(object sender, EventArgs e)
         {
-            inputFieldRepeater1.ExecuteValidation();
+            if (string.IsNullOrEmpty(SiteNameBox.Text))
+            {
+                MessageBox.Show(this, "The name of the site is required.", "Validation error", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (inputFieldRepeater1.AllControlsValid())
+            {
+                var generator = new Core.Generator.ProjectGenerator();
+
+                selectedTemplate.Prepare(SiteNameBox.Text);
+
+                generator.Generate(new GeneratorArguments
+                                       {
+                                           Name = SiteNameBox.Text,
+                                           TemplateInformation = selectedTemplate
+                                       },
+                                   inputFieldRepeater1.GetInputValues());
+            }
         }
+
+        #endregion "Generator"
     }
 }

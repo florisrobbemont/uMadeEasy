@@ -30,6 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mercurial.Net">
+      <HintPath>..\..\libs\Mercurial.NET\Mercurial.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Administration, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -44,16 +51,50 @@
   <ItemGroup>
     <Compile Include="ActionHelpers\DirectoryRenamerCopier.cs" />
     <Compile Include="ActionHelpers\HostFileWriter.cs" />
-    <Compile Include="CreateDestinationAction.cs" />
+    <Compile Include="Database\CreateDatabaseAction.cs" />
+    <Compile Include="FileSystem\CreateDestinationAction.cs" />
+    <Compile Include="FileSystem\EditHostFileAction.cs" />
+    <Compile Include="General\RegisterIisAction.cs" />
+    <Compile Include="General\RenameTemplateSiteAction.cs" />
+    <Compile Include="InputFields\CloneMercurialRepositoryField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputFields\CloneMercurialRepositoryField.Designer.cs">
+      <DependentUpon>CloneMercurialRepositoryField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputFields\RegisterIisField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputFields\RegisterIisField.Designer.cs">
+      <DependentUpon>RegisterIisField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputFields\EditHostsFileField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputFields\EditHostsFileField.Designer.cs">
+      <DependentUpon>EditHostsFileField.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputFields\CreateDestinationField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="InputFields\CreateDestinationField.Designer.cs">
       <DependentUpon>CreateDestinationField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mercurial\CloneMercurialRepositoryAction.cs" />
+    <Compile Include="Mercurial\CommitMercurialRepositoryAction.cs" />
+    <Compile Include="Mercurial\PushMercurialRepositoryAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="InputFields\CloneMercurialRepositoryField.resx">
+      <DependentUpon>CloneMercurialRepositoryField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputFields\RegisterIisField.resx">
+      <DependentUpon>RegisterIisField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputFields\EditHostsFileField.resx">
+      <DependentUpon>EditHostsFileField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputFields\CreateDestinationField.resx">
       <DependentUpon>CreateDestinationField.cs</DependentUpon>
     </EmbeddedResource>
@@ -64,6 +105,7 @@
       <Name>uMadeEasy.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

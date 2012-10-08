@@ -1,31 +1,27 @@
 ﻿using Lucrasoft.uMadeEasy.Core.InputFields;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Lucrasoft.uMadeEasy.Actions.InputFields
 {
-    public partial class CreateDestinationField : InputFieldControl
+    public partial class CloneMercurialRepositoryField : InputFieldControl
     {
-        public CreateDestinationField()
+        public CloneMercurialRepositoryField()
         {
             InitializeComponent();
-        }
-
-        private void SelectFolderButtonClick(object sender, EventArgs e)
-        {
-            var result = folderBrowserDialog1.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                SitePathBox.Text = folderBrowserDialog1.SelectedPath;
-            }
         }
 
         public override ActionInputValues GetInputValues()
         {
             return new ActionInputValues()
                        {
-                           { "DestinationFolder", SitePathBox.Text }
+                           { "MercurialCloneUrl", CloneUrlBox.Text }
                        };
         }
 
@@ -33,8 +29,8 @@ namespace Lucrasoft.uMadeEasy.Actions.InputFields
         {
             var validateArgument = new ActionInputValidationArguments();
 
-            if (string.IsNullOrEmpty(SitePathBox.Text))
-                validateArgument.ValidationMessage = "Folder cannot be empty";
+            if (string.IsNullOrEmpty(CloneUrlBox.Text))
+                validateArgument.ValidationMessage = "Clone URL cannot be empty";
 
             validateArgument.IsValid = string.IsNullOrEmpty(validateArgument.ValidationMessage);
 

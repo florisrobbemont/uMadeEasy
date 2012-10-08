@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Lucrasoft.uMadeEasy.Core.InputFields
 {
+    /// <summary>
+    /// Repeats all input controls based on a template.
+    /// </summary>
     public partial class InputFieldRepeater : UserControl
     {
         public InputFieldRepeater()
@@ -20,6 +23,32 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
 
         #region "Fields"
 
+        /// <summary>
+        /// Gets all the input control with their values.
+        /// </summary>
+        public ActionInputValues GetInputValues()
+        {
+            var actionInputValues = new ActionInputValues();
+
+            foreach (var inputControl in GetInputControls())
+            {
+                var values = inputControl.GetInputValues();
+                if (values.Any())
+                {
+                    foreach (var value in values)
+                    {
+                        if (!actionInputValues.ContainsKey(value.Key))
+                            actionInputValues.Add(value.Key, value.Value);
+                    }
+                }
+            }
+
+            return actionInputValues;
+        }
+
+        /// <summary>
+        /// Builds the fields from the actions in the supplied template
+        /// </summary>
         public void BuildFields(IEnumerable<IGeneratorAction> actions,
                                 IEnumerable<Type> controls,
                                 TemplateInformation template)
@@ -53,11 +82,11 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
                     throw new InvalidOperationException(string.Format("Could not find control ('{0}') in injected action list. Are you missing an assembly in the Actions folder?",
                                                                       generatorAction.InputControl.AssemblyQualifiedName));
 
-                ediControlsPanel.Controls.Add(BuildEditControl(generatorAction, generatorControl, template));
+                ediControlsPanel.Controls.Add(BuildEditControl(generatorAction, generatorControl));
             }
         }
 
-        private Control BuildEditControl(IGeneratorAction action, Type control, TemplateInformation template)
+        private static Control BuildEditControl(IGeneratorAction action, Type control)
         {
             var editControl = ReflectionHelpers.CreateTypeInstance<InputFieldControl>(control);
 
@@ -71,14 +100,23 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
                 Name = string.Format("inputField_{0}", action.GetType().Name),
                 Width = editControl.Width + 10,
                 Height = editControl.Height + 25,
-                Text = action.ActionName,
+                Text = action.ActionName
             };
 
             editControl.Dock = DockStyle.Top;
+            editControl.Action = action;
 
             groupBox.Controls.Add(editControl);
 
             return groupBox;
+        }
+
+        private IEnumerable<InputFieldControl> GetInputControls()
+        {
+            return
+                (from Control control in ediControlsPanel.Controls.Cast<object>().Where(control => control is GroupBox)
+                 from editControl in control.Controls.Cast<object>().Where(editControl => editControl is InputFieldControl)
+                 select (InputFieldControl)editControl);
         }
 
         #endregion "Fields"
@@ -88,15 +126,17 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
         /// <summary>
         /// Performs validation on all child controls
         /// </summary>
-        public void ExecuteValidation()
+        public bool AllControlsValid()
         {
-            foreach (var validationResult in (from Control control in ediControlsPanel.Controls.Cast<object>().Where(control => control is GroupBox)
-                                              from editControl in control.Controls.Cast<object>().Where(editControl => editControl is InputFieldControl)
-                                              select (InputFieldControl)editControl).Select(control => control.ValidateInputValues()).Where(validationResult => !validationResult.IsValid))
+            foreach (var validationResult in GetInputControls().Select(control => control.ValidateInputValues()).Where(validationResult => !validationResult.IsValid))
             {
                 MessageBox.Show(this, validationResult.ValidationMessage, "Validation error", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+
+                return false;
             }
+
+            return true;
         }
 
         #endregion "Validation"

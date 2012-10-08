@@ -37,7 +37,10 @@ namespace Lucrasoft.uMadeEasy.Core.Template
             if (string.IsNullOrEmpty(filePath))
                 throw new ArgumentNullException("filePath");
 
-            return ParseXmlDocument(XDocument.Load(filePath));
+            var template = ParseXmlDocument(XDocument.Load(filePath));
+            template.TemplatePath = Path.GetDirectoryName(filePath);
+
+            return template;
         }
 
         private static TemplateInformation ParseXmlDocument(XDocument document)
@@ -75,6 +78,10 @@ namespace Lucrasoft.uMadeEasy.Core.Template
             var guidsElement = template.Element("guids");
             if (guidsElement != null)
                 templateInformation.Guids = guidsElement.Descendants("guid").Select(x => x.Value);
+
+            var renameElement = template.Element("renameWords");
+            if (renameElement != null)
+                templateInformation.Words = renameElement.Descendants("word").Select(x => x.Value);
 
             return templateInformation;
         }
