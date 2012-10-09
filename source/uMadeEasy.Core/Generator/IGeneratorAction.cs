@@ -49,5 +49,10 @@ namespace Lucrasoft.uMadeEasy.Core.Generator
         /// Gets the optional input control for this action.
         /// </summary>
         Type InputControl { get; }
+
+        ///// <summary>
+        ///// Gets the required fields for this action to work
+        ///// </summary>
+        //string[] RequiredInputFields { get; }
     }
 }

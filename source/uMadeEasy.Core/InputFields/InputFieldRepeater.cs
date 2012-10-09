@@ -74,7 +74,7 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
                                                                       action.ActionType));
 
                 if (generatorAction.InputControl == null)
-                    break;
+                    continue;
 
                 var generatorControl = generatorControls.FirstOrDefault(x => x == generatorAction.InputControl);
 

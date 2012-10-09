@@ -14,7 +14,7 @@ namespace Lucrasoft.uMadeEasy.Actions.Database
     public class CreateDatabaseAction : IGeneratorAction
     {
         private const string DatabaseNameFormat = "{0}{1}";
-        private const string DatabaseCreateStatement = "CREATE DATABASE [{0};";
+        private const string DatabaseCreateStatement = "CREATE DATABASE [{0}];";
         private const string DatabaseDropStatement = "DROP DATABASE [{0}];";
         private const string DatabaseOsqlCommand = "-S {0} -U {1} -P {2} ";
 
@@ -94,7 +94,7 @@ namespace Lucrasoft.uMadeEasy.Actions.Database
 
             using (var sqlConnection = new SqlConnection(connectionString))
             {
-                using (var sqlCommand = new SqlCommand(string.Format(DatabaseCreateStatement, string.Format(DatabaseNameFormat, databasePrefix, arguments.Name))
+                using (var sqlCommand = new SqlCommand(string.Format(DatabaseDropStatement, string.Format(DatabaseNameFormat, databasePrefix, arguments.Name))
                                                                     , sqlConnection))
                 {
                     sqlCommand.Connection.Open();

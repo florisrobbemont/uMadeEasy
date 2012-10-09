@@ -33,7 +33,7 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
         /// </summary>
         public virtual ActionInputValidationArguments ValidateInputValues()
         {
-            return null;
+            return new ActionInputValidationArguments { IsValid = true, ValidationMessage = "" };
         }
     }
 }

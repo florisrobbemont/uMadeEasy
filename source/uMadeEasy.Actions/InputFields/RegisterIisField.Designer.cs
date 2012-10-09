@@ -39,7 +39,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Edit hosts file:";
+            this.label3.Text = "Register site in IIS:";
             // 
             // RegisterIisBox
             // 

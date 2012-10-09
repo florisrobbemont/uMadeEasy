@@ -25,7 +25,7 @@ namespace Lucrasoft.uMadeEasy.Core.Template
                    select Directory.GetFiles(folder, "template.xml").ToList()
                        into files
                        where files.Any()
-                       select ParseXmlDocument(XDocument.Load(files.First()));
+                       select ReadTemplate(files.First());
         }
 
         /// <summary>
