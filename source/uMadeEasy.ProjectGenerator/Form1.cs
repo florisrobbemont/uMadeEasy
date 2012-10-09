@@ -1,6 +1,7 @@
 ﻿using Lucrasoft.uMadeEasy.Core;
 using Lucrasoft.uMadeEasy.Core.Generator;
 using Lucrasoft.uMadeEasy.Core.Template;
+using Lucrasoft.uMadeEasy.ProjectGenerator.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,27 +73,47 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
 
         private void GenerateButtonClick(object sender, EventArgs e)
         {
+            if (!(ValidateSiteNameBox()) || (!inputFieldRepeater1.ValidateAllControl()))
+                return;
+
+            selectedTemplate.Prepare(SiteNameBox.Text);
+
+            var generatorArguments = new GeneratorArguments
+                                         {
+                                             Name = SiteNameBox.Text,
+                                             TemplateInformation = selectedTemplate,
+                                             InputValues = inputFieldRepeater1.GetInputValues()
+                                         };
+
+            var generatorForm = new GeneratorForm(generatorArguments);
+            generatorForm.ShowDialog();
+        }
+
+        private bool ValidateSiteNameBox()
+        {
             if (string.IsNullOrEmpty(SiteNameBox.Text))
             {
                 MessageBox.Show(this, "The name of the site is required.", "Validation error", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                return;
+                return false;
             }
 
-            if (inputFieldRepeater1.AllControlsValid())
+            var invalidCharList = new List<char>();
+            invalidCharList.AddRange(System.IO.Path.GetInvalidFileNameChars());
+            invalidCharList.AddRange(System.IO.Path.GetInvalidPathChars());
+
+            invalidCharList.Add('-');
+
+            if (SiteNameBox.Text.ToCharArray().Count(invalidCharList.Contains) > 0)
             {
-                var generator = new Core.Generator.ProjectGenerator();
+                MessageBox.Show(this, "The following chars are not allowed in the project name box: " + String.Join(", ", SiteNameBox.Text.ToCharArray().Where(invalidCharList.Contains).Distinct()),
+                                "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                selectedTemplate.Prepare(SiteNameBox.Text);
-
-                generator.Generate(new GeneratorArguments
-                                       {
-                                           Name = SiteNameBox.Text,
-                                           TemplateInformation = selectedTemplate
-                                       },
-                                   inputFieldRepeater1.GetInputValues());
+                return false;
             }
+
+            return true;
         }
 
         #endregion "Generator"

@@ -46,7 +46,7 @@
             // EditHostsFIleBox
             // 
             this.EditHostsFIleBox.AutoSize = true;
-            this.EditHostsFIleBox.Location = new System.Drawing.Point(309, 10);
+            this.EditHostsFIleBox.Location = new System.Drawing.Point(350, 10);
             this.EditHostsFIleBox.Name = "EditHostsFIleBox";
             this.EditHostsFIleBox.Size = new System.Drawing.Size(15, 14);
             this.EditHostsFIleBox.TabIndex = 13;
@@ -65,7 +65,7 @@
             // 
             this.HostNameBox.Location = new System.Drawing.Point(107, 36);
             this.HostNameBox.Name = "HostNameBox";
-            this.HostNameBox.Size = new System.Drawing.Size(217, 20);
+            this.HostNameBox.Size = new System.Drawing.Size(258, 20);
             this.HostNameBox.TabIndex = 15;
             // 
             // EditHostsFileField

@@ -74,10 +74,13 @@ namespace Lucrasoft.uMadeEasy.Actions.General
 
             if (registerIis)
             {
-                // Get IIS reference
                 var serverManager = new ServerManager();
 
-                // Create new AppPool or use existing
+                var site = serverManager.Sites.FirstOrDefault(x => x.Name == arguments.Name);
+
+                if (site != null)
+                    serverManager.Sites.Remove(site);
+
                 var appPool = serverManager.ApplicationPools.FirstOrDefault(x => x.Name == arguments.Name);
 
                 if (appPool != null)
@@ -93,6 +96,16 @@ namespace Lucrasoft.uMadeEasy.Actions.General
         public Type InputControl
         {
             get { return typeof(RegisterIisField); }
+        }
+
+        public IEnumerable<string> RequiredInputFields
+        {
+            get
+            {
+                yield return "RegisterIis";
+                yield return "HostName";
+                yield return "DestinationFolder";
+            }
         }
     }
 }

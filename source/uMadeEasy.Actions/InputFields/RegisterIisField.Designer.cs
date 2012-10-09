@@ -37,14 +37,14 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Register site in IIS:";
             // 
             // RegisterIisBox
             // 
             this.RegisterIisBox.AutoSize = true;
-            this.RegisterIisBox.Location = new System.Drawing.Point(309, 10);
+            this.RegisterIisBox.Location = new System.Drawing.Point(350, 10);
             this.RegisterIisBox.Name = "RegisterIisBox";
             this.RegisterIisBox.Size = new System.Drawing.Size(15, 14);
             this.RegisterIisBox.TabIndex = 13;

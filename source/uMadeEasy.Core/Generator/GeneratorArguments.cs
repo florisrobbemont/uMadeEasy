@@ -1,4 +1,5 @@
-﻿using Lucrasoft.uMadeEasy.Core.Template;
+﻿using Lucrasoft.uMadeEasy.Core.InputFields;
+using Lucrasoft.uMadeEasy.Core.Template;
 
 namespace Lucrasoft.uMadeEasy.Core.Generator
 {
@@ -16,5 +17,10 @@ namespace Lucrasoft.uMadeEasy.Core.Generator
         /// Gets or sets the template information for the new project
         /// </summary>
         public TemplateInformation TemplateInformation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the input values from the input controls
+        /// </summary>
+        public ActionInputValues InputValues { get; set; }
     }
 }

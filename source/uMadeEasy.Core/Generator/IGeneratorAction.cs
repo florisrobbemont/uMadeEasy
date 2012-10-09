@@ -50,9 +50,9 @@ namespace Lucrasoft.uMadeEasy.Core.Generator
         /// </summary>
         Type InputControl { get; }
 
-        ///// <summary>
-        ///// Gets the required fields for this action to work
-        ///// </summary>
-        //string[] RequiredInputFields { get; }
+        /// <summary>
+        /// Gets the required fields for this action to work
+        /// </summary>
+        IEnumerable<string> RequiredInputFields { get; }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="ActionHelpers\DirectoryRenamerCopier.cs" />
     <Compile Include="ActionHelpers\HostFileWriter.cs" />
     <Compile Include="Database\CreateDatabaseAction.cs" />
+    <Compile Include="FileSystem\CleanupDestinationAction.cs" />
     <Compile Include="FileSystem\CreateDestinationAction.cs" />
     <Compile Include="FileSystem\EditHostFileAction.cs" />
     <Compile Include="General\RegisterIisAction.cs" />

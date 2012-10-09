@@ -94,8 +94,8 @@ namespace Lucrasoft.uMadeEasy.Actions.Database
 
             using (var sqlConnection = new SqlConnection(connectionString))
             {
-                using (var sqlCommand = new SqlCommand(string.Format(DatabaseDropStatement, string.Format(DatabaseNameFormat, databasePrefix, arguments.Name))
-                                                                    , sqlConnection))
+                using (var sqlCommand = new SqlCommand(string.Format(DatabaseDropStatement, string.Format(DatabaseNameFormat, databasePrefix, arguments.Name)),
+                                                       sqlConnection))
                 {
                     sqlCommand.Connection.Open();
                     sqlCommand.ExecuteNonQuery();
@@ -109,6 +109,11 @@ namespace Lucrasoft.uMadeEasy.Actions.Database
         public Type InputControl
         {
             get { return null; }
+        }
+
+        public IEnumerable<string> RequiredInputFields
+        {
+            get { yield return "DestinationFolder"; }
         }
     }
 }

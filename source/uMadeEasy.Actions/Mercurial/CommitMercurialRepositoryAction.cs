@@ -55,5 +55,10 @@ namespace Lucrasoft.uMadeEasy.Actions.Mercurial
         {
             get { return null; }
         }
+
+        public IEnumerable<string> RequiredInputFields
+        {
+            get { yield return "DestinationFolder"; }
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Lucrasoft.uMadeEasy.Actions.FileSystem
 
         public string RollBackMessage
         {
-            get { return ""; }
+            get { return "This will remove the newly created hosts entry."; }
         }
 
         public bool AllowContinueAfterError
@@ -76,6 +76,15 @@ namespace Lucrasoft.uMadeEasy.Actions.FileSystem
         public Type InputControl
         {
             get { return typeof(EditHostsFileField); }
+        }
+
+        public IEnumerable<string> RequiredInputFields
+        {
+            get
+            {
+                yield return "DestinationFolder";
+                yield return "HostName";
+            }
         }
     }
 }

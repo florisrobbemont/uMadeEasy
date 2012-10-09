@@ -38,7 +38,7 @@
             // SelectFolderButton
             // 
             this.SelectFolderButton.Image = ((System.Drawing.Image)(resources.GetObject("SelectFolderButton.Image")));
-            this.SelectFolderButton.Location = new System.Drawing.Point(343, 6);
+            this.SelectFolderButton.Location = new System.Drawing.Point(335, 6);
             this.SelectFolderButton.Name = "SelectFolderButton";
             this.SelectFolderButton.Size = new System.Drawing.Size(28, 25);
             this.SelectFolderButton.TabIndex = 10;

@@ -126,7 +126,7 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
         /// <summary>
         /// Performs validation on all child controls
         /// </summary>
-        public bool AllControlsValid()
+        public bool ValidateAllControl()
         {
             foreach (var validationResult in GetInputControls().Select(control => control.ValidateInputValues()).Where(validationResult => !validationResult.IsValid))
             {

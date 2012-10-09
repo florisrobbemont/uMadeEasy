@@ -61,5 +61,10 @@ namespace Lucrasoft.uMadeEasy.Actions.General
         {
             get { return null; }
         }
+
+        public IEnumerable<string> RequiredInputFields
+        {
+            get { yield return "DestinationFolder"; }
+        }
     }
 }

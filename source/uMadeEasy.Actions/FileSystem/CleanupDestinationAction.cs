@@ -1,23 +1,20 @@
-﻿using Lucrasoft.uMadeEasy.Actions.InputFields;
-using Lucrasoft.uMadeEasy.Core.Generator;
-using Mercurial;
-using Mercurial.Gui;
+﻿using Lucrasoft.uMadeEasy.Core.Generator;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Lucrasoft.uMadeEasy.Actions.Mercurial
+namespace Lucrasoft.uMadeEasy.Actions.FileSystem
 {
     /// <summary>
-    /// Clones a Mercurial repository from a clone URL
+    /// Removes all files created by the generator before submitting it into source control
     /// </summary>
-    public class CloneMercurialRepositoryAction : IGeneratorAction
+    public class CleanupDestinationAction : IGeneratorAction
     {
         public string ActionName
         {
-            get { return "Clone Mercurial repository"; }
+            get { return "Cleanup destination"; }
         }
 
         public string RollBackMessage
@@ -27,7 +24,7 @@ namespace Lucrasoft.uMadeEasy.Actions.Mercurial
 
         public bool AllowContinueAfterError
         {
-            get { return false; }
+            get { return true; }
         }
 
         public bool SupportsRollback
@@ -38,19 +35,16 @@ namespace Lucrasoft.uMadeEasy.Actions.Mercurial
         public GeneratorActionResult ExecuteAction(GeneratorArguments arguments, Core.InputFields.ActionInputValues values, Dictionary<string, string> parameters)
         {
             var location = values.GetString("DestinationFolder");
-            var cloneUrl = values.GetString("MercurialCloneUrl");
 
-            if (Directory.Exists(location))
-            {
-                var repo = new Repository(location);
-                repo.CloneGui(new CloneGuiCommand { Source = cloneUrl, WaitForGuiToClose = true });
-            }
-            else
-            {
-                return new GeneratorActionResult(false, "Directory doesn't exist!");
-            }
+            RemoveFile(Path.Combine(location, "Template.xml"));
 
             return new GeneratorActionResult(true, "");
+        }
+
+        private static void RemoveFile(string filePath)
+        {
+            if (File.Exists(filePath))
+                File.Delete(filePath);
         }
 
         public GeneratorActionResult RollbackAction(GeneratorArguments arguments, Core.InputFields.ActionInputValues values, Dictionary<string, string> parameters)
@@ -60,16 +54,12 @@ namespace Lucrasoft.uMadeEasy.Actions.Mercurial
 
         public Type InputControl
         {
-            get { return typeof(CloneMercurialRepositoryField); }
+            get { return null; }
         }
 
         public IEnumerable<string> RequiredInputFields
         {
-            get
-            {
-                yield return "DestinationFolder";
-                yield return "MercurialCloneUrl";
-            }
+            get { yield return "DestinationFolder"; }
         }
     }
 }

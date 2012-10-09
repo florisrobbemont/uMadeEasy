@@ -15,7 +15,7 @@ namespace Lucrasoft.uMadeEasy.Actions.FileSystem
 
         public string RollBackMessage
         {
-            get { return "This rollback will permanently remove the newly created folder (even though there may already be files in it)"; }
+            get { return "This rollback will permanently remove the newly created folder (even though there may already be files in it)."; }
         }
 
         public bool AllowContinueAfterError
@@ -50,9 +50,7 @@ namespace Lucrasoft.uMadeEasy.Actions.FileSystem
             var location = values.GetString("DestinationFolder");
 
             if (Directory.Exists(location))
-            {
                 Directory.Delete(location, true);
-            }
 
             return new GeneratorActionResult(true, "");
         }
@@ -60,6 +58,11 @@ namespace Lucrasoft.uMadeEasy.Actions.FileSystem
         public Type InputControl
         {
             get { return typeof(InputFields.CreateDestinationField); }
+        }
+
+        public IEnumerable<string> RequiredInputFields
+        {
+            get { yield return "DestinationFolder"; }
         }
     }
 }
