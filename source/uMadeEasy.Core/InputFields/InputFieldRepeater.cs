@@ -95,7 +95,7 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
 
             var groupBox = new GroupBox()
             {
-                Margin = new Padding(0, 0, 5, 5),
+                Margin = new Padding(0, 0, 5, 9),
                 Padding = new Padding(5),
                 Name = string.Format("inputField_{0}", action.GetType().Name),
                 Width = editControl.Width + 10,
@@ -140,5 +140,21 @@ namespace Lucrasoft.uMadeEasy.Core.InputFields
         }
 
         #endregion "Validation"
+
+        #region "Events"
+
+        /// <summary>
+        /// Fired when the project name on the main form has changed.
+        /// </summary>
+        /// <param name="projectName">The new project name.</param>
+        public void OnProjectNameChanged(string projectName)
+        {
+            foreach (var inputControl in GetInputControls())
+            {
+                inputControl.OnProjectNameChanged(projectName);
+            }
+        }
+
+        #endregion "Events"
     }
 }

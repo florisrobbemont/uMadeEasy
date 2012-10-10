@@ -21,15 +21,24 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
         [STAThread]
         private static void Main()
         {
-            Injector = new DependencyInjector(new string[]
-                                                  {
-                                                      Path.Combine(IoHelpers.GetStartupPath(), ""),
-                                                      IoHelpers.GetActionPath()
-                                                  });
+            Prepare();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
+        }
+
+        private static void Prepare()
+        {
+            Injector = new DependencyInjector(new string[]
+                                              {
+                                                  IoHelpers.GetStartupPath(),
+                                                  IoHelpers.GetActionPath()
+                                              });
+
+            var templatePath = Path.Combine(IoHelpers.GetStartupPath(), "Templates");
+            if (!Directory.Exists(templatePath))
+                Directory.CreateDirectory(templatePath);
         }
     }
 }

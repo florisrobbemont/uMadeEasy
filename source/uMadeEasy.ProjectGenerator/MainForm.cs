@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,9 @@ using System.Windows.Forms;
 
 namespace Lucrasoft.uMadeEasy.ProjectGenerator
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -25,6 +26,11 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
         private void InitializeForm()
         {
             BuildTemplates();
+        }
+
+        private void LogoBoxClick(object sender, EventArgs e)
+        {
+            Process.Start("http://www.lucrasoft.nl");
         }
 
         #region "Templates"
@@ -57,14 +63,18 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
         {
             if (SelectedTemplate != null)
             {
-                if (
-                    MessageBox.Show(this,
+                if (MessageBox.Show(this,
                                     "You've already selected a template. If you switch all input will be lost. Do you want to continue?",
                                     "Switch template", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
                     return;
             }
 
             SelectedTemplate = TemplateComboBox.SelectedValue as TemplateInformation;
+        }
+
+        private void ProjectNameBoxTextChanged(object sender, EventArgs e)
+        {
+            inputFieldRepeater1.OnProjectNameChanged(ProjectNameBox.Text);
         }
 
         #endregion "Templates"
@@ -76,11 +86,11 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
             if (!(ValidateSiteNameBox()) || (!inputFieldRepeater1.ValidateAllControl()))
                 return;
 
-            selectedTemplate.Prepare(SiteNameBox.Text);
+            selectedTemplate.Prepare(ProjectNameBox.Text);
 
             var generatorArguments = new GeneratorArguments
                                          {
-                                             Name = SiteNameBox.Text,
+                                             Name = ProjectNameBox.Text,
                                              TemplateInformation = selectedTemplate,
                                              InputValues = inputFieldRepeater1.GetInputValues()
                                          };
@@ -91,7 +101,7 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
 
         private bool ValidateSiteNameBox()
         {
-            if (string.IsNullOrEmpty(SiteNameBox.Text))
+            if (string.IsNullOrEmpty(ProjectNameBox.Text))
             {
                 MessageBox.Show(this, "The name of the site is required.", "Validation error", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
@@ -105,9 +115,9 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
 
             invalidCharList.Add('-');
 
-            if (SiteNameBox.Text.ToCharArray().Count(invalidCharList.Contains) > 0)
+            if (ProjectNameBox.Text.ToCharArray().Count(invalidCharList.Contains) > 0)
             {
-                MessageBox.Show(this, "The following chars are not allowed in the project name box: " + String.Join(", ", SiteNameBox.Text.ToCharArray().Where(invalidCharList.Contains).Distinct()),
+                MessageBox.Show(this, "The following chars are not allowed in the project name box: " + String.Join(", ", ProjectNameBox.Text.ToCharArray().Where(invalidCharList.Contains).Distinct()),
                                 "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
