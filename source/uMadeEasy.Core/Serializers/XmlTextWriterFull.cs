@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using System;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -11,13 +13,29 @@ namespace Lucrasoft.uMadeEasy.Core.Serializers
     /// </summary>
     public class XmlTextWriterFull : XmlTextWriter
     {
-        public XmlTextWriterFull(TextWriter sink) : base(sink) { SetFormatting(); }
+        public XmlTextWriterFull(TextWriter sink)
+            : base(sink)
+        {
+            SetFormatting();
+        }
 
-        public XmlTextWriterFull(Stream stream) : base(stream, null) { SetFormatting(); }
+        public XmlTextWriterFull(Stream stream)
+            : base(stream, null)
+        {
+            SetFormatting();
+        }
 
-        public XmlTextWriterFull(Stream stream, Encoding enc) : base(stream, enc) { SetFormatting(); }
+        public XmlTextWriterFull(Stream stream, Encoding enc)
+            : base(stream, enc)
+        {
+            SetFormatting();
+        }
 
-        public XmlTextWriterFull(String str, Encoding enc) : base(str, enc) { SetFormatting(); }
+        public XmlTextWriterFull(String str, Encoding enc)
+            : base(str, enc)
+        {
+            SetFormatting();
+        }
 
         private void SetFormatting()
         {

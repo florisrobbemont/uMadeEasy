@@ -1,15 +1,13 @@
-﻿using Lucrasoft.uMadeEasy.Core;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using Lucrasoft.uMadeEasy.Core;
 using Lucrasoft.uMadeEasy.Core.Generator;
 using Lucrasoft.uMadeEasy.Core.Template;
 using Lucrasoft.uMadeEasy.ProjectGenerator.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Lucrasoft.uMadeEasy.ProjectGenerator
@@ -75,6 +73,11 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
         private void ProjectNameBoxTextChanged(object sender, EventArgs e)
         {
             inputFieldRepeater1.OnProjectNameChanged(ProjectNameBox.Text);
+        }
+
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            Close();
         }
 
         #endregion "Templates"

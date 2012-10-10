@@ -1,4 +1,6 @@
-﻿using Lucrasoft.uMadeEasy.Actions.InputFields;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using Lucrasoft.uMadeEasy.Actions.InputFields;
 using Lucrasoft.uMadeEasy.Core.Generator;
 using Microsoft.Web.Administration;
 using System;

@@ -1,12 +1,6 @@
-﻿using Lucrasoft.uMadeEasy.Core.InputFields;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using Lucrasoft.uMadeEasy.Core.InputFields;
 
 namespace Lucrasoft.uMadeEasy.Actions.InputFields
 {

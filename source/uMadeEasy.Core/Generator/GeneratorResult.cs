@@ -1,4 +1,6 @@
-﻿namespace Lucrasoft.uMadeEasy.Core.Generator
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+namespace Lucrasoft.uMadeEasy.Core.Generator
 {
     /// <summary>
     /// Contains the results of a newly generated project.

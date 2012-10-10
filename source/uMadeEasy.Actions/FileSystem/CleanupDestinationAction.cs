@@ -1,4 +1,6 @@
-﻿using Lucrasoft.uMadeEasy.Core.Generator;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using Lucrasoft.uMadeEasy.Core.Generator;
 using System;
 using System.Collections.Generic;
 using System.IO;

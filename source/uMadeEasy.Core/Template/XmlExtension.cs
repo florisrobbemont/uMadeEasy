@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,13 +16,15 @@ namespace Lucrasoft.uMadeEasy.Core.Template
         /// Gets or sets the file extensions (including the .)
         /// </summary>
         public string FileExtension { get; set; }
-        
+
         /// <summary>
         /// Gets or sets wether this extension should be handled as UTF-8 encoding
         /// </summary>
         public bool UseUtf8Encoding { get; set; }
 
-        public XmlExtension() { }
+        public XmlExtension()
+        {
+        }
 
         public XmlExtension(string extension, bool useUtf8Encoding)
         {

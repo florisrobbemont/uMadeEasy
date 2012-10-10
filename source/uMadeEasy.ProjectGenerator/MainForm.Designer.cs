@@ -37,10 +37,9 @@
             this.GenerateButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inputFieldRepeater1 = new Lucrasoft.uMadeEasy.Core.InputFields.InputFieldRepeater();
             this.LogoBox = new System.Windows.Forms.PictureBox();
+            this.inputFieldRepeater1 = new Lucrasoft.uMadeEasy.Core.InputFields.InputFieldRepeater();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).BeginInit();
@@ -59,7 +58,7 @@
             this.groupBox1.Size = new System.Drawing.Size(785, 87);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Gegevens";
+            this.groupBox1.Text = "Information";
             // 
             // TemplateComboBox
             // 
@@ -125,34 +124,17 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newTemplateToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newTemplateToolStripMenuItem
-            // 
-            this.newTemplateToolStripMenuItem.Name = "newTemplateToolStripMenuItem";
-            this.newTemplateToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.newTemplateToolStripMenuItem.Text = "New template";
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // inputFieldRepeater1
-            // 
-            this.inputFieldRepeater1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputFieldRepeater1.Location = new System.Drawing.Point(12, 180);
-            this.inputFieldRepeater1.Margin = new System.Windows.Forms.Padding(0);
-            this.inputFieldRepeater1.Name = "inputFieldRepeater1";
-            this.inputFieldRepeater1.Size = new System.Drawing.Size(798, 259);
-            this.inputFieldRepeater1.TabIndex = 8;
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
             // LogoBox
             // 
@@ -167,7 +149,18 @@
             this.LogoBox.TabStop = false;
             this.LogoBox.Click += new System.EventHandler(this.LogoBoxClick);
             // 
-            // Form1
+            // inputFieldRepeater1
+            // 
+            this.inputFieldRepeater1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputFieldRepeater1.Location = new System.Drawing.Point(12, 180);
+            this.inputFieldRepeater1.Margin = new System.Windows.Forms.Padding(0);
+            this.inputFieldRepeater1.Name = "inputFieldRepeater1";
+            this.inputFieldRepeater1.Size = new System.Drawing.Size(798, 259);
+            this.inputFieldRepeater1.TabIndex = 8;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,7 +173,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "uMadeEasy Generator";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -203,7 +196,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.PictureBox LogoBox;
 

@@ -1,4 +1,6 @@
-﻿using Lucrasoft.uMadeEasy.Core;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using Lucrasoft.uMadeEasy.Core;
 using Lucrasoft.uMadeEasy.Core.Logging;
 using System;
 using System.Collections.Generic;

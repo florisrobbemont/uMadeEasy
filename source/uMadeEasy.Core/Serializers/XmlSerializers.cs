@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;

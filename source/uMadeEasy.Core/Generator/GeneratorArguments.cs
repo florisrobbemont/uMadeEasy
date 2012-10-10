@@ -1,4 +1,6 @@
-﻿using Lucrasoft.uMadeEasy.Core.InputFields;
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+using Lucrasoft.uMadeEasy.Core.InputFields;
 using Lucrasoft.uMadeEasy.Core.Template;
 
 namespace Lucrasoft.uMadeEasy.Core.Generator

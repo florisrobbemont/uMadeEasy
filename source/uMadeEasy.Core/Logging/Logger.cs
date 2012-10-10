@@ -1,4 +1,6 @@
-﻿namespace Lucrasoft.uMadeEasy.Core.Logging
+﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
+
+namespace Lucrasoft.uMadeEasy.Core.Logging
 {
     /// <summary>
     /// Provides logging functionality
