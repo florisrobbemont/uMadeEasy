@@ -1,4 +1,4 @@
-REM Example: "C:\Development\Github\uMadeEasy\source\uMadeEasy.Scripts\Create template\ReleaseBuildScript.bat" "C:\Development\Github\uMadeEasy\source\uMadeEasy.ProjectGenerator\bin\Debug\Templates\FirstTemplate" "C:\Development\Github\uMadeEasy\templates\Umbraco 4.7"
+REM Example: "C:\Development\Github\uMadeEasy\source\uMadeEasy.Scripts\Create template\ReleaseBuildScript.bat" "C:\Development\Github\uMadeEasy\source\uMadeEasy.ProjectGenerator\bin\Debug\Templates\FirstTemplate" "C:\Development\Github\uMadeEasy\templates\Umbraco 4.71"
 
 @echo OFF
 
@@ -6,9 +6,11 @@ REM TemplateDir = %~f1
 REM OutputPath = %~f2
 
 set template_database_name="Umb-UmbTemplate"
-set template_database_server="ntlucra6.lucrasoft.local"
+set template_database_server="localhost"
 
 set curr_dir=%cd%
+
+mkdir "%~f2"
 REM chdir /D %~f1\
 
 REM Create Database Dump
