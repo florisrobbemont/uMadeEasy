@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
 
+using Lucrasoft.uMadeEasy.Actions.ActionHelpers;
 using Lucrasoft.uMadeEasy.Actions.InputFields;
 using Lucrasoft.uMadeEasy.Core.Generator;
 using Microsoft.Web.Administration;
@@ -41,6 +42,9 @@ namespace Lucrasoft.uMadeEasy.Actions.General
             var hosttName = values.GetString("HostName");
             var location = values.GetString("DestinationFolder");
             var umbracoRelativePath = parameters["umbracoRelativePath"];
+
+            foreach (var renameWord in arguments.TemplateInformation.Renames)
+                umbracoRelativePath = StringHelpers.ReplaceEx(umbracoRelativePath, renameWord.Key, renameWord.Value);
 
             if (registerIis)
             {

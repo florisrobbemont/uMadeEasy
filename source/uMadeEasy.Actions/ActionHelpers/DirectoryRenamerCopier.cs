@@ -76,7 +76,7 @@ namespace Lucrasoft.uMadeEasy.Actions.ActionHelpers
                 var destinationFileName = currentFile.Name;
                 foreach (var renameWord in RenameWords)
                 {
-                    destinationFileName = ReplaceEx(destinationFileName, renameWord.Key, renameWord.Value);
+                    destinationFileName = StringHelpers.ReplaceEx(destinationFileName, renameWord.Key, renameWord.Value);
                 }
 
                 var destinationFilePath = Path.Combine(destinationPath, destinationFileName);
@@ -102,7 +102,7 @@ namespace Lucrasoft.uMadeEasy.Actions.ActionHelpers
 
                     foreach (var renameWord in RenameWords)
                     {
-                        fileContent = ReplaceEx(fileContent, renameWord.Key, renameWord.Value);
+                        fileContent = StringHelpers.ReplaceEx(fileContent, renameWord.Key, renameWord.Value);
                     }
 
                     if (UtfExtensions.Contains(currentFileExtension))
@@ -122,7 +122,7 @@ namespace Lucrasoft.uMadeEasy.Actions.ActionHelpers
                 var destinationDirectoryName = currentDirectory.Name;
                 foreach (var renameWord in RenameWords)
                 {
-                    destinationDirectoryName = ReplaceEx(destinationDirectoryName, renameWord.Key, renameWord.Value);
+                    destinationDirectoryName = StringHelpers.ReplaceEx(destinationDirectoryName, renameWord.Key, renameWord.Value);
                 }
 
                 string destinationDirectoryPath = Path.Combine(destinationPath, destinationDirectoryName);
@@ -138,30 +138,6 @@ namespace Lucrasoft.uMadeEasy.Actions.ActionHelpers
         public bool StartRenaming()
         {
             return StartRenaming(TemplateDirectoryPath, DestinationDirectoryPath);
-        }
-
-        private static string ReplaceEx(string original, string pattern, string replacement)
-        {
-            int count, position0, position1;
-            count = position0 = position1 = 0;
-            string upperString = original.ToUpper();
-            string upperPattern = pattern.ToUpper();
-            int inc = (original.Length / pattern.Length) *
-                      (replacement.Length - pattern.Length);
-            char[] chars = new char[original.Length + Math.Max(0, inc)];
-            while ((position1 = upperString.IndexOf(upperPattern,
-                                              position0)) != -1)
-            {
-                for (int i = position0; i < position1; ++i)
-                    chars[count++] = original[i];
-                for (int i = 0; i < replacement.Length; ++i)
-                    chars[count++] = replacement[i];
-                position0 = position1 + pattern.Length;
-            }
-            if (position0 == 0) return original;
-            for (int i = position0; i < original.Length; ++i)
-                chars[count++] = original[i];
-            return new string(chars, 0, count);
         }
 
         #endregion "Process"

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ActionHelpers\DirectoryRenamerCopier.cs" />
     <Compile Include="ActionHelpers\HostFileWriter.cs" />
+    <Compile Include="ActionHelpers\StringHelpers.cs" />
     <Compile Include="Database\CreateDatabaseAction.cs" />
     <Compile Include="FileSystem\CleanupDestinationAction.cs" />
     <Compile Include="FileSystem\CreateDestinationAction.cs" />
