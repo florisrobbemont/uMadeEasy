@@ -13,7 +13,7 @@ namespace Lucrasoft.uMadeEasy.Actions.FileSystem
     /// <summary>
     /// Adds a new entry in the hosts file
     /// </summary>
-    public class EitHostFileAction : IGeneratorAction
+    public class EditHostFileAction : IGeneratorAction
     {
         public string ActionName
         {
