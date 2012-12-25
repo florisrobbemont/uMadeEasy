@@ -1,0 +1,1 @@
+SqlPubWiz.msi IsInvokedFromVS=1 /log "%TEMP%\dd_SqlPubWiz_14_msi.txt"
