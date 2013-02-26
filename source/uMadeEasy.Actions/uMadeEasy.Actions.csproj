@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Mercurial\CloneMercurialRepositoryAction.cs" />
     <Compile Include="Mercurial\CommitMercurialRepositoryAction.cs" />
+    <Compile Include="Mercurial\CheckEmptyMercurialRepositoryAction.cs" />
     <Compile Include="Mercurial\PushMercurialRepositoryAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
