@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
 
+using System.IO;
 using Lucrasoft.uMadeEasy.Actions.ActionHelpers;
 using Lucrasoft.uMadeEasy.Core.Generator;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Lucrasoft.uMadeEasy.Actions.General
 {
@@ -38,6 +37,7 @@ namespace Lucrasoft.uMadeEasy.Actions.General
         public GeneratorActionResult ExecuteAction(GeneratorArguments arguments, Core.InputFields.ActionInputValues values, Dictionary<string, string> parameters)
         {
             var location = values.GetString("DestinationFolder");
+            var iisExpressUrl = parameters.ContainsKey("iisExpressUrl") ? parameters["iisExpressUrl"] : "";
 
             var copier = new DirectoryRenamerCopier(arguments.TemplateInformation.TemplatePath, location)
                              {
@@ -47,6 +47,8 @@ namespace Lucrasoft.uMadeEasy.Actions.General
                                  UtfExtensions = arguments.TemplateInformation.RenameExtensions.Where(x => x.UseUtf8Encoding).Select(x => x.FileExtension).ToList(),
                                  RenameWords = arguments.TemplateInformation.Renames
                              };
+
+            copier.RenameWords.Add(iisExpressUrl, string.Format("http://localhost:{0}/", GetRandomPort()));
 
             if (copier.StartRenaming())
                 return new GeneratorActionResult(true, "");
@@ -67,6 +69,12 @@ namespace Lucrasoft.uMadeEasy.Actions.General
         public IEnumerable<string> RequiredInputFields
         {
             get { yield return "DestinationFolder"; }
+        }
+
+        private static int GetRandomPort()
+        {
+            var random = new Random();
+            return random.Next(10000, 50000);
         }
     }
 }
