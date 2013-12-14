@@ -126,6 +126,14 @@ namespace Lucrasoft.uMadeEasy.ProjectGenerator
                 return false;
             }
 
+            if (!Char.IsUpper(ProjectNameBox.Text[0]))
+            {
+                MessageBox.Show(this, "The name of the site should start with a UpperCase char.", "Validation error", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+
+                return false;
+            }
+
             return true;
         }
 
