@@ -11,6 +11,26 @@ namespace Lucrasoft.uMadeEasy.Actions.InputFields
         public CreateDestinationField()
         {
             InitializeComponent();
+
+            // When the environment variable REPOPATH is set use this as a prefix
+            try
+            {
+                var repoPath = Environment.GetEnvironmentVariable("REPOPATH", EnvironmentVariableTarget.User);
+
+                if (!string.IsNullOrEmpty(repoPath))
+                {
+                    if (!repoPath.EndsWith(@"\"))
+                    {
+                        repoPath = repoPath + @"\";
+                    }
+
+                    SitePathBox.Text = repoPath.ToLower();
+                    folderBrowserDialog1.SelectedPath = repoPath;
+                }
+            }
+            catch
+            {
+            }
         }
 
         private void SelectFolderButtonClick(object sender, EventArgs e)

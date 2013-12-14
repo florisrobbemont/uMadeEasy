@@ -1,6 +1,6 @@
 ﻿namespace Lucrasoft.uMadeEasy.Actions.InputFields
 {
-    partial class CloneMercurialRepositoryField
+    partial class CloneRepositoryField
     {
         /// <summary> 
         /// Required designer variable.
@@ -53,13 +53,13 @@
             // 
             this.folderBrowserDialog1.Description = "Selecteer Source control pad";
             // 
-            // CloneMercurialRepositoryField
+            // CloneRepositoryField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.CloneUrlBox);
             this.Controls.Add(this.label3);
-            this.Name = "CloneMercurialRepositoryField";
+            this.Name = "CloneRepositoryField";
             this.ResumeLayout(false);
             this.PerformLayout();
 

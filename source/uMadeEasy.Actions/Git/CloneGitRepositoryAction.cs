@@ -1,25 +1,20 @@
 ﻿// Copyright (c) Lucrasoft ICT Group. All rights reserved. See License.txt in the project root for license information.
 
-using Lucrasoft.uMadeEasy.Actions.InputFields;
-using Lucrasoft.uMadeEasy.Core.Generator;
-using Mercurial;
-using Mercurial.Gui;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+using Lucrasoft.uMadeEasy.Actions.InputFields;
+using Lucrasoft.uMadeEasy.Core.Generator;
 
-namespace Lucrasoft.uMadeEasy.Actions.Mercurial
+namespace Lucrasoft.uMadeEasy.Actions.Git
 {
     /// <summary>
-    /// Clones a Mercurial repository from a clone URL
+    /// Clones a Git project
     /// </summary>
-    public class CloneMercurialRepositoryAction : IGeneratorAction
+    public class CloneGitRepositoryAction : IGeneratorAction
     {
         public string ActionName
         {
-            get { return "Clone Mercurial repository"; }
+            get { return "Clone Git repository"; }
         }
 
         public string RollBackMessage
@@ -37,21 +32,20 @@ namespace Lucrasoft.uMadeEasy.Actions.Mercurial
             get { return false; }
         }
 
-        public GeneratorActionResult ExecuteAction(GeneratorArguments arguments, Core.InputFields.ActionInputValues values, Dictionary<string, string> parameters)
+        public virtual GeneratorActionResult ExecuteAction(GeneratorArguments arguments, Core.InputFields.ActionInputValues values, Dictionary<string, string> parameters)
         {
-            var location = values.GetString("DestinationFolder");
             var cloneUrl = values.GetString("CloneUrl");
+            var location = values.GetString("DestinationFolder");
 
-            if (Directory.Exists(location))
+            try
             {
-                var repo = new Repository(location);
-                repo.CloneGui(new CloneGuiCommand { Source = cloneUrl, WaitForGuiToClose = true });
+                GitCommandRunner.RunCommand(string.Format("clone {0} ./", cloneUrl), location);
             }
-            else
+            catch (Exception ex)
             {
-                return new GeneratorActionResult(false, "Directory doesn't exist!");
+                return new GeneratorActionResult(false, ex.Message);
             }
-
+            
             return new GeneratorActionResult(true, "");
         }
 
@@ -60,12 +54,12 @@ namespace Lucrasoft.uMadeEasy.Actions.Mercurial
             throw new NotImplementedException();
         }
 
-        public Type InputControl
+        public virtual Type InputControl
         {
             get { return typeof(CloneRepositoryField); }
         }
 
-        public IEnumerable<string> RequiredInputFields
+        public virtual IEnumerable<string> RequiredInputFields
         {
             get
             {

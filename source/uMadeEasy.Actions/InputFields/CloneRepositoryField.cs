@@ -4,9 +4,9 @@ using Lucrasoft.uMadeEasy.Core.InputFields;
 
 namespace Lucrasoft.uMadeEasy.Actions.InputFields
 {
-    public partial class CloneMercurialRepositoryField : InputFieldControl
+    public partial class CloneRepositoryField : InputFieldControl
     {
-        public CloneMercurialRepositoryField()
+        public CloneRepositoryField()
         {
             InitializeComponent();
         }
@@ -15,7 +15,7 @@ namespace Lucrasoft.uMadeEasy.Actions.InputFields
         {
             return new ActionInputValues()
                        {
-                           { "MercurialCloneUrl", CloneUrlBox.Text }
+                           { "CloneUrl", CloneUrlBox.Text }
                        };
         }
 

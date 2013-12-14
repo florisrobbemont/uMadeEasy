@@ -11,6 +11,8 @@
     <AssemblyName>uMadeEasy.Actions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Microsoft.Web.Administration.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -58,11 +63,18 @@
     <Compile Include="FileSystem\EditHostFileAction.cs" />
     <Compile Include="General\RegisterIisAction.cs" />
     <Compile Include="General\RenameTemplateSiteAction.cs" />
-    <Compile Include="InputFields\CloneMercurialRepositoryField.cs">
+    <Compile Include="Git\GitCommandRunner.cs" />
+    <Compile Include="Git\PushGitRepositoryAction.cs" />
+    <Compile Include="Git\CommitGitRepositoryAction.cs" />
+    <Compile Include="Git\CloneGitRepositoryFromPreviousAction.cs" />
+    <Compile Include="Git\CloneGitRepositoryAction.cs" />
+    <Compile Include="Git\GetGitlabCloneUrlAction.cs" />
+    <Compile Include="Git\CreateGitlabProjectAction.cs" />
+    <Compile Include="InputFields\CloneRepositoryField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InputFields\CloneMercurialRepositoryField.Designer.cs">
-      <DependentUpon>CloneMercurialRepositoryField.cs</DependentUpon>
+    <Compile Include="InputFields\CloneRepositoryField.Designer.cs">
+      <DependentUpon>CloneRepositoryField.cs</DependentUpon>
     </Compile>
     <Compile Include="InputFields\RegisterIisField.cs">
       <SubType>UserControl</SubType>
@@ -89,8 +101,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InputFields\CloneMercurialRepositoryField.resx">
-      <DependentUpon>CloneMercurialRepositoryField.cs</DependentUpon>
+    <EmbeddedResource Include="InputFields\CloneRepositoryField.resx">
+      <DependentUpon>CloneRepositoryField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputFields\RegisterIisField.resx">
       <DependentUpon>RegisterIisField.cs</DependentUpon>
@@ -109,9 +121,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Git\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
